@@ -6,7 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="053f66c7-5a93-43f8-aa66-da184b6cf894" name="更改" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/commany/Snake.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/commany/Snake.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/commany/Fruit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/commany/Fruit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/commany/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/commany/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,6 +43,13 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/src" />
+      <recent name="$PROJECT_DIR$/out" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="默认任务">
@@ -57,7 +65,9 @@
       <workItem from="1688294654990" duration="6064000" />
       <workItem from="1688303821213" duration="3000" />
       <workItem from="1688303846065" duration="1595000" />
-      <workItem from="1688305484987" duration="2057000" />
+      <workItem from="1688305484987" duration="2763000" />
+      <workItem from="1688309477480" duration="159000" />
+      <workItem from="1688309757972" duration="3471000" />
     </task>
     <servers />
   </component>

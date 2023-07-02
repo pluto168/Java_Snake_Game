@@ -9,8 +9,8 @@ import java.util.Timer;
 import java.util.TimerTask;
 public class Main extends JPanel implements KeyListener {
     public static  final  int CELL_SIZE = 20;
-    public static  int width = 400;
-    public static   int height = 400;
+    public static  int width = 800;
+    public static   int height = 800;
     public static int row = height / CELL_SIZE;
     public static int column = width / CELL_SIZE;
     private Snake snake;
@@ -40,8 +40,9 @@ public class Main extends JPanel implements KeyListener {
         //System.out.println("We are calling paint component...");
         //draw a black background
         g.fillRect(0,0,width,height);
-        snake.drawSnake(g);
         fruit.drawFruit(g);
+        snake.drawSnake(g);
+
 
         //remove snake tail and put it in head
         int snakeX = snake.getSnakeBody().get(0).x;
@@ -61,9 +62,21 @@ public class Main extends JPanel implements KeyListener {
             snakeY += CELL_SIZE;
         }
         Node newHead = new Node(snakeX,snakeY);
-        snake.getSnakeBody().remove(snake.getSnakeBody().size() - 1);
-        snake.getSnakeBody().add(0, newHead);
 
+        //check if the snake eats the fruit
+        if(snake.getSnakeBody().get(0).x == fruit.getX() && snake.getSnakeBody().get(0).y == fruit.getY()){
+            //System.out.println("Eating the fruit!!!"); //測試有沒有吃到水果
+            //1. set fruit to a new location
+            fruit.setNewLocation(snake);
+            //2. drawFruit
+            fruit.drawFruit(g);
+            //3. score++
+
+        }else{
+            snake.getSnakeBody().remove(snake.getSnakeBody().size() - 1);
+        }
+
+        snake.getSnakeBody().add(0, newHead);
         allowKeyPress = true;
         requestFocusInWindow();
     }
