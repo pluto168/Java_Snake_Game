@@ -19,10 +19,19 @@ public class Main extends JPanel implements KeyListener {
     private int speed = 100;   //0.1秒
     private static String direction;
     private boolean allowKeyPress;
+    private int score;
 
     public Main(){
-        snake = new Snake();
-        fruit = new Fruit();
+
+        reset();
+        //snake = new Snake();
+        //fruit = new Fruit();
+        //direction = "Right";
+        addKeyListener(this);
+        //allowKeyPress = true;
+    }
+
+    private  void setTimer(){
         t = new Timer();
         t.scheduleAtFixedRate(new TimerTask() {
             @Override
@@ -30,13 +39,45 @@ public class Main extends JPanel implements KeyListener {
                 repaint();
             }
         },0, speed);
-        direction = "Right";
-        addKeyListener(this);
+    }
+    private void reset(){
+        score = 0;
+        if(snake != null){
+            snake.getSnakeBody().clear();
+        }
         allowKeyPress = true;
+        direction = "Right";
+        snake = new Snake();
+        fruit = new Fruit();
+        setTimer();
     }
 
     @Override
     public void  paintComponent(Graphics g){
+        //check if the snake bites itself
+        ArrayList<Node> snake_body = snake.getSnakeBody();
+        Node head = snake_body.get(0);
+        for(int i = 1; i < snake_body.size(); i++){
+            if(snake_body.get(i).x == head.x && snake_body.get(i).y == head.y){
+                allowKeyPress = false;   //遊戲結束
+                t.cancel();
+                t.purge();
+                int response = JOptionPane.showOptionDialog(this, "Game Over!!! Would you like ti start over?", "Game Over."
+                        ,JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE, null ,null ,JOptionPane.YES_OPTION);
+                switch (response){
+                    case JOptionPane.CLOSED_OPTION:
+                        System.exit(0);
+                        break;
+                    case JOptionPane.NO_OPTION:
+                        System.exit(0);
+                        break;
+                    case JOptionPane.YES_OPTION:
+                        reset();
+                        return;
+                }
+            }
+        }
+
         //System.out.println("We are calling paint component...");
         //draw a black background
         g.fillRect(0,0,width,height);
