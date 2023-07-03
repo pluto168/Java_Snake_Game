@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="053f66c7-5a93-43f8-aa66-da184b6cf894" name="更改" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/commany/Fruit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/commany/Fruit.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/commany/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/commany/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -22,6 +23,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectId" id="2S0P63h8PPC8I6QHtuZf1O6BSMC" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -69,6 +73,10 @@
       <workItem from="1688309757972" duration="5722000" />
       <workItem from="1688317733773" duration="589000" />
       <workItem from="1688318343750" duration="27000" />
+      <workItem from="1688318380211" duration="1289000" />
+      <workItem from="1688388167360" duration="4555000" />
+      <workItem from="1688396340614" duration="80000" />
+      <workItem from="1688396435660" duration="742000" />
     </task>
     <servers />
   </component>

@@ -45,6 +45,7 @@ public class Fruit {
         this.y = new_y;
     }
 
+    //避免蘋果的新座標落到蛇的身上
     private boolean check_overlap(int x, int y, Snake s){
         ArrayList<Node> snake_body = s.getSnakeBody();
         for(int j=0; j < snake_body.size();j++){

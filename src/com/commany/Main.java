@@ -4,6 +4,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.*;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -20,10 +24,12 @@ public class Main extends JPanel implements KeyListener {
     private static String direction;
     private boolean allowKeyPress;
     private int score;
+    private int highest_score;
 
     public Main(){
 
         reset();
+        read_highest_score();
         //snake = new Snake();
         //fruit = new Fruit();
         //direction = "Right";
@@ -62,8 +68,10 @@ public class Main extends JPanel implements KeyListener {
                 allowKeyPress = false;   //遊戲結束
                 t.cancel();
                 t.purge();
-                int response = JOptionPane.showOptionDialog(this, "Game Over!!! Would you like ti start over?", "Game Over."
+                int response = JOptionPane.showOptionDialog(this, "Game Over!!! Your score is "+ score +". The highest score was "+ highest_score +" Would you like to start over?", "Game Over."
                         ,JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE, null ,null ,JOptionPane.YES_OPTION);
+
+                write_a_file(score);
                 switch (response){
                     case JOptionPane.CLOSED_OPTION:
                         System.exit(0);
@@ -102,6 +110,7 @@ public class Main extends JPanel implements KeyListener {
         } else if (direction.equals("Down")) {
             snakeY += CELL_SIZE;
         }
+
         Node newHead = new Node(snakeX,snakeY);
 
         //check if the snake eats the fruit
@@ -112,11 +121,13 @@ public class Main extends JPanel implements KeyListener {
             //2. drawFruit
             fruit.drawFruit(g);
             //3. score++
+            score++;
 
         }else{
             snake.getSnakeBody().remove(snake.getSnakeBody().size() - 1);
         }
 
+        // Increase the length of the snake
         snake.getSnakeBody().add(0, newHead);
         allowKeyPress = true;
         requestFocusInWindow();
@@ -161,5 +172,41 @@ public class Main extends JPanel implements KeyListener {
     @Override
     public void keyReleased(KeyEvent e) {
 
+    }
+
+    public void read_highest_score(){
+        try{
+            File myObj = new File("filename.txt");
+            Scanner myReader = new Scanner(myObj);
+            highest_score = myReader.nextInt();
+            myReader.close();
+        }catch (FileNotFoundException e){
+            highest_score = 0;
+            try{
+                File myObj = new File("filename.txt");
+                if(myObj.createNewFile()){
+                    System.out.printf("File created: "+ myObj.getName());
+                }
+                FileWriter myWriter = new FileWriter(myObj.getName());
+                myWriter.write(""+ 0);
+            }catch (IOException err){
+                System.out.printf("An err occurred");
+                err.printStackTrace();
+            }
+        }
+    }
+    public void write_a_file(int score){
+        try{
+            FileWriter myWriter = new FileWriter("filename.txt");
+            if(score > highest_score){
+                myWriter.write(""+ score);
+                highest_score = score;
+            }else{
+                myWriter.write(""+ highest_score);
+            }
+            myWriter.close();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
     }
 }
