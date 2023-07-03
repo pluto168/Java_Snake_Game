@@ -11,7 +11,8 @@ public class Fruit {
 
 
     public Fruit(){
-        img = new ImageIcon("apple.png");
+        //img = new ImageIcon("apple.png");
+        img = new ImageIcon(getClass().getResource("apple.png"));
         this.x = (int)(Math.floor(Math.random()*Main.column) * Main.CELL_SIZE);
         this.y = (int)(Math.floor(Math.random()*Main.row) * Main.CELL_SIZE);
 
